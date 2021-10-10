@@ -13,22 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/articles/', function() {
-    return 'Article List';
-});
-
-Route::get('/articles/detail', function() {
-    return 'Article Detail';
-})->name('article.detail');
-
-Route::get('/articles/detail/{id}', function($id) {
-    return "Article Deail - $id";
-});
-
-Route::get('/articles/more', function() {
-    return redirect()->route('article.detail');
-});
+Route::get('/', 'Article\ArticleController@index');
+Route::get('/articles', 'Article\ArticleController@index');
+Route::get('/articles/detail/{id}', 'Article\ArticleController@detail');
