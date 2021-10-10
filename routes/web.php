@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'Article\ArticleController@index');
 Route::get('/articles', 'Article\ArticleController@index');
 Route::get('/articles/detail/{id}', 'Article\ArticleController@detail');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
