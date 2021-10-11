@@ -23,3 +23,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/articles/add', 'Article\ArticleController@add');
 Route::post('/articles/add', 'Article\ArticleController@create');
 Route::get('/articles/delete/{id}', 'Article\ArticleController@delete');
+
+Route::post('/articles/detail/article_id/comments/add', 'Comment\CommentController@create');
+Route::get('/articles/detail/article_id/comments/delete/{id}', 'Comment\CommentController@delete');
