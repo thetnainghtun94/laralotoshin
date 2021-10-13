@@ -24,15 +24,21 @@
                     <a href="{{ url("/articles/detail/article_id/comments/delete/$comment->id") }}" class="close">
                         &times;
                     </a>
+                    <div class="small mt-2">
+                        By <b>{{ $comment->user->name }}</b>,
+                        {{ $comment->created_at->diffForHumans() }}
+                    </div>
                 </li>
             @endforeach
         </ul>
 
-        <form action="{{ url('/articles/detail/article_id/comments/add') }}" method="post" class="mt-2">
-            @csrf
-            <input type="hidden" name="article_id" value="{{ $article->id }}">
-            <textarea name="content" class="form-control mb-2" placeholder="New Comment"></textarea>
-            <input type="submit" value="Add Comment" class="btn btn-secondary">
-        </form>
+        @auth
+            <form action="{{ url('/articles/detail/article_id/comments/add') }}" method="post" class="mt-2">
+                @csrf
+                <input type="hidden" name="article_id" value="{{ $article->id }}">
+                <textarea name="content" class="form-control mb-2" placeholder="New Comment" required></textarea>
+                <input type="submit" value="Add Comment" class="btn btn-secondary">
+            </form>
+        @endauth    
     </div>
 @endsection
